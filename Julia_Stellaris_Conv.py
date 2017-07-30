@@ -1,8 +1,6 @@
 
 # coding: utf-8
 
-# In[26]:
-
 #0. Load train images
 #1. Genetic Algorithm work
 #2. Make convolutional network for images
@@ -10,9 +8,6 @@
 #4. Make Stellaris file from all images
 #5. ...
 #6. PROFIT
-
-
-# In[39]:
 
 # import libs
 # not worked without it
@@ -50,9 +45,6 @@ bad_pics_sorted_dir = os.path.join(work_dir, 'bad_pics_sorted')
 unsorted_pics_dir = os.path.join(work_dir, 'unsorted_pics')
 stellaris_maps_dir = os.path.join(work_dir, 'map\\setup_scenarios')
 
-
-# In[45]:
-
 #0. Load train images
 
 good_pics = np.array(glob.glob(good_pics_dir + '\\*.jpg'))
@@ -88,8 +80,6 @@ with open(os.path.join(work_dir, 'julia.pickle'), 'wb') as handle:
     pickle.dump([x, y, xtest, ytest], handle, protocol=pickle.HIGHEST_PROTOCOL)
 print('done')
 
-
-# In[3]:
 
 #1. Genetic Algorithm work
 # GA classes
@@ -236,8 +226,6 @@ print(repr(b))
 os.system(r'rundll32.exe powrprof.dll,SetSuspendState Hibernate')
 
 
-# In[46]:
-
 #2. Make convolutional network for images
 with open(os.path.join(work_dir, 'julia.pickle'), 'rb') as handle:
     x, y, xtest, ytest = pickle.load(handle)
@@ -288,8 +276,6 @@ print(model.evaluate(xtest, ytest))
 print((time() - timer)/60)
 
 
-# In[48]:
-
 #3. Evaluation of the generated images and sort
 unsorted_pics = np.array(glob.glob(unsorted_pics_dir + '\\*.jpg'))
 xsort = np.array([np.array(Image.open(fname)) for fname in unsorted_pics])
@@ -306,8 +292,6 @@ for i, pic in enumerate(xsort):
         os.rename(unsorted_pics[i], os.path.join(bad_pics_sorted_dir, name))
 print('done')
 
-
-# In[ ]:
 
 #4. Make Stellaris file from all images
 def gen_galaxy(current_pic):
@@ -357,27 +341,11 @@ for good_pic in good_pics:
 print('done')
 
 
-# In[47]:
-
 #5. ...
 
 
-# In[22]:
-
 #6. PROFIT
 
-
-# In[ ]:
-
-
-
-
-# In[ ]:
-
-
-
-
-# In[44]:
 
 # rename images
 good_pics = np.array(glob.glob(good_pics_dir + '\\*.jpg'))
@@ -391,24 +359,3 @@ for i, pic in enumerate(bad_pics):
     name = 'IJSNC_bad ' + str(i) + '.jpg'
     os.rename(bad_pics[i], os.path.join(bad_pics_dir, name))
 print('done')
-
-
-# In[ ]:
-
-
-
-
-# In[ ]:
-
-
-
-
-# In[ ]:
-
-
-
-
-# In[ ]:
-
-
-
